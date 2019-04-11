@@ -138,7 +138,16 @@ def custom_pop(input_list):
 
     """
 
-    return None
+    #store last element into a variable
+    last_element = str(input_list[-1])
+    
+    #Slice list from first index to second to last element
+    input_list[:-1]
+    #Return last element variable
+
+    print(input_list[:-1])
+    #print(last_element)
+    return last_element
 
 
 def custom_index(input_list, value):
@@ -154,8 +163,11 @@ def custom_index(input_list, value):
 
     """
 
-    return 0
+    for index, item in enumerate(input_list):
+        if value == item:
+            return index
 
+    # in JavaScript, would initialize with counter before looping
 
 def custom_count(input_list, value):
     """Return the number of times value appears in the list.
@@ -169,8 +181,15 @@ def custom_count(input_list, value):
         2
 
     """
+    #Initialize counter
+    counter = 0
+    #Loop thru list
+    for item in input_list:
+        if value == item:
+            counter += 1 #If value = current item, add 1 to counter
 
-    return 0
+    #Return counter
+    return counter
 
 
 def custom_reverse(input_list):
@@ -189,8 +208,12 @@ def custom_reverse(input_list):
 
     """
 
-    pass
+    input_list[::-1] #doesn't work - this creates a new list. Need to modify "in place" rather than new list. Slicing create a new list automatically
 
+    # start at last index, then pop onto front - use the pop-like code
+    # loop through input_list
+    # pop off last element and put into index 0
+    # stop loop at length - 1
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
@@ -208,8 +231,10 @@ def custom_contains(input_list, value):
         True
 
     """
-
-    return None
+    for index, item in enumerate(input_list):
+        if value == item:
+            return True
+    return False
 
 
 def custom_equality(some_list, another_list):
