@@ -100,7 +100,19 @@ def custom_insert(input_list, index, value):
 
     """
 
-    input_list[index:index+1] = [value]
+    # input_list[index:index+1] = [value]
+
+    # print(input_list[index:index+1])
+
+
+    for i in range(len(input_list)):
+        if i == index - 1:
+            input_list[index-1:index] += [value] # correct! Adding list into specific index area of input_list
+            # input_list[index] += [value] # results in TypeError, because attempting to add list onto string
+            # input_list[index-1:index] += value # value is a string, so is iterating through value and adding each element into list
+            # print(input_list)
+
+    # i starts at 
 
 
 def custom_remove(input_list, value):
@@ -139,14 +151,13 @@ def custom_pop(input_list):
     """
 
     #store last element into a variable
-    last_element = str(input_list[-1])
-    
-    #Slice list from first index to second to last element
-    input_list[:-1]
-    #Return last element variable
+    last_element = input_list[-1]
 
-    print(input_list[:-1])
-    #print(last_element)
+    second_to_last = input_list[-2]
+
+    input_list[-2:] = [second_to_last] # when have a range (:), need brackets. When on range, dont't need bracket
+
+    # print(input_list)
     return last_element
 
 
@@ -207,13 +218,25 @@ def custom_reverse(input_list):
         True
 
     """
-
-    input_list[::-1] #doesn't work - this creates a new list. Need to modify "in place" rather than new list. Slicing create a new list automatically
+    # input_list[::-1] #doesn't work - this creates a new list. Need to modify "in place" rather than new list. Slicing create a new list automatically
 
     # start at last index, then pop onto front - use the pop-like code
     # loop through input_list
-    # pop off last element and put into index 0
+    # pop off last element and insert (not replace) into index 0
     # stop loop at length - 1
+
+    # pop like code
+        # last_element = input_list[-1]
+        # second_to_last = input_list[-2]
+        # input_list[-2:] = [second_to_last] # when have a range (:), need brackets. When on range, dont't need bracket
+        # return last_element
+
+    for index in range(len(input_list)-1,0,-1): # stop loop at length - 1
+        last_element = input_list[-1] #stores index 3 (value 4) in variable
+        input_list[-2:] = [input_list[-2]] # overiding the second to last element with the last element
+        last_element += input_list[:]
+        print(input_list)
+
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
@@ -252,8 +275,10 @@ def custom_equality(some_list, another_list):
         False
 
     """
+    if some_list == another_list:
+        return True
 
-    return None
+    return False
 
 
 ##############################################################################
