@@ -225,18 +225,31 @@ def custom_reverse(input_list):
     # pop off last element and insert (not replace) into index 0
     # stop loop at length - 1
 
-    # pop like code
-        # last_element = input_list[-1]
-        # second_to_last = input_list[-2]
-        # input_list[-2:] = [second_to_last] # when have a range (:), need brackets. When on range, dont't need bracket
-        # return last_element
+    # THIS JUST ADDS LAST ELEMENT ONTO FRONT (RETURNS SAME LIST)
+    # for index in range(len(input_list)-1,0,-1): # stop loop at length - 1
+    #     last_element = input_list[-1] #stores index 3 (value 4) in variable
+    #     input_list[-2:] = [input_list[-2]] # overiding the second to last element with the last element
+    #     input_list = [last_element] + input_list
+    #     # print(input_list)
+    # print(input_list)
+
+        # #OUTPUT OF ABOVE
+        # [27, 0, 3, 6, 9, 12, 15, 18, 21, 24]
+        # [24, 27, 0, 3, 6, 9, 12, 15, 18, 21]
+        # [21, 24, 27, 0, 3, 6, 9, 12, 15, 18]
+        # [18, 21, 24, 27, 0, 3, 6, 9, 12, 15]
+        # [15, 18, 21, 24, 27, 0, 3, 6, 9, 12]
+        # [12, 15, 18, 21, 24, 27, 0, 3, 6, 9]
+        # [9, 12, 15, 18, 21, 24, 27, 0, 3, 6]
+        # [6, 9, 12, 15, 18, 21, 24, 27, 0, 3]
+        # [3, 6, 9, 12, 15, 18, 21, 24, 27, 0]
+
 
     for index in range(len(input_list)-1,0,-1): # stop loop at length - 1
-        last_element = input_list[-1] #stores index 3 (value 4) in variable
-        input_list[-2:] = [input_list[-2]] # overiding the second to last element with the last element
-        last_element += input_list[:]
-        print(input_list)
-
+        last_element = input_list[-1]
+        input_list[-2:] = [input_list[-2]] 
+        input_list = [last_element] + input_list
+    print(input_list)
 
 def custom_contains(input_list, value):
     """Return True or False if value is in the input_list.
